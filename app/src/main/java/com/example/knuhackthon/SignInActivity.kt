@@ -19,23 +19,14 @@ class SignInActivity : AppCompatActivity() {
         setContentView(binding.root)
         auth = FirebaseAuth.getInstance()
 
-        email = intent.getStringExtra("email")
-        pw = intent.getStringExtra("pw")
+        binding.btnSignIn.setOnClickListener {
+            email = binding.emailText.text.toString()
+            pw = binding.pwText.text.toString()
 
-        binding.btnSignin.setOnClickListener {
             auth?.signInWithEmailAndPassword(email!!,pw!!)
                 ?.addOnCompleteListener {
                     task ->
                     if(task.isSuccessful){
-                        /*if(isEmailVerified()){
-                            val intent = Intent(this, MainActivity::class.java)
-                            startActivity(intent)
-                        }
-                        else{
-                            auth?.signOut()
-                            Toast.makeText(this,"인증메일을 확인해주세요",Toast.LENGTH_LONG).show()
-                        }*/
-
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
                     }
@@ -45,16 +36,9 @@ class SignInActivity : AppCompatActivity() {
                 }
         }
 
-        binding.btnSignup.setOnClickListener {
+        binding.btnSignUp.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
         }
     }
-
-    /*fun isEmailVerified(){
-        var user = auth?.currentUser
-        if(user!=null){
-            var accessToken =
-        }
-    }*/
 }

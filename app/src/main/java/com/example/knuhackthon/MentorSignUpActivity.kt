@@ -24,17 +24,32 @@ class MentorSignUpActivity : AppCompatActivity() {
     var auth : FirebaseAuth? = null
     var email : String? = null
     var pw : String? = null
+    var code : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         auth = FirebaseAuth.getInstance()
+        code = createEmailCode()
         binding.btnEmailVerify.setOnClickListener {
             email = binding.emailText.text.toString()!!
-            var code = createEmailCode()
             CoroutineScope(Dispatchers.IO).launch { sendEmail("인증 메일입니다",code!!,email!!) }
+            Toast.makeText(this,"인증 메일 발송 완료",Toast.LENGTH_SHORT).show()
         }
         binding.btnSignup.setOnClickListener { signUp() }
+        binding.btnEmailConfirm.setOnClickListener {
+            var inputCode = binding.emailverifyText.text.toString()
+            if(inputCode.equals(code)){
+                Toast.makeText(this,"인증 성공.",Toast.LENGTH_SHORT).show()
+                binding.emailverifyText.isClickable = false
+                binding.emailverifyText.isEnabled = false
+                binding.emailverifyText.isFocusable = false
+            }
+            else{
+                Toast.makeText(this,"인증번호가 일치하지 않습니다.",Toast.LENGTH_SHORT).show()
+                binding.emailverifyText.setText("")
+            }
+        }
     }
 
     fun signUp(){
@@ -42,42 +57,17 @@ class MentorSignUpActivity : AppCompatActivity() {
             ?.addOnCompleteListener {
                 task ->
                 if (task.isSuccessful){
-                    Toast.makeText(this,"계정 생성 성공. 검증용 이메일 전송",Toast.LENGTH_LONG).show()
-                    sendVerificationEmail()
+                    Toast.makeText(this,"회원 가입 성공",Toast.LENGTH_SHORT).show()
+                    auth?.signOut()
+                    val intent = Intent(this, SignInActivity::class.java)
+                    startActivity(intent)
+                    finish()
                 }
                 else{
-
+                    Toast.makeText(this,"회원 가입 실패, 재시도 해주세요",Toast.LENGTH_SHORT).show()
+                    finish()
                 }
             }
-    }
-
-    fun sendVerificationEmail(){
-        var user = auth?.currentUser!!
-
-        val url = "https://knuhackthon.page.link/check"
-        val actionCodeSettings = ActionCodeSettings.newBuilder()
-            .setUrl(url)
-            .setIOSBundleId("com.example.ios")
-            .setAndroidPackageName("com.example.knuhackthon",false,null)
-            .build()
-
-        user?.sendEmailVerification()?.addOnCompleteListener {
-            task ->
-            if(task.isSuccessful){
-                Toast.makeText(this,"인증메일이 전송되었습니다. 메일을 확인해 주세요",Toast.LENGTH_LONG).show()
-                auth?.signOut()
-                val intent = Intent(this, SignInActivity::class.java)
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.putExtra("email",binding.emailText.text.toString())
-                intent.putExtra("pw", binding.pwText.text.toString())
-                startActivity(intent)
-                finish()
-            }
-            else{
-                Toast.makeText(this,"검증 메일 전송 실패했습니다.",Toast.LENGTH_LONG).show()
-            }
-        }
-        Toast.makeText(this,"계정 생성 성공. 검증용 이메일 전송",Toast.LENGTH_LONG).show()
     }
 
     suspend fun sendEmail(
@@ -87,8 +77,8 @@ class MentorSignUpActivity : AppCompatActivity() {
     )
     {
         // 보내는 메일 주소와 비밀번호
-        val username = "";
-        val password = "";
+        val username = "knuhackathon@gmail.com";
+        val password = "hackathon!";
 
         val props = Properties();
         props.put("mail.smtp.auth", "true");
@@ -113,19 +103,6 @@ class MentorSignUpActivity : AppCompatActivity() {
             InternetAddress.parse(dest))
         message.subject = title
         message.setText(body)
-
-
-        /*// 파일을 담기 위한 Multipart 생성
-        val multipart = MimeMultipart()
-        val messageBodyPart = MimeBodyPart()
-        val source = FileDataSource(filePath)
-
-        messageBodyPart.dataHandler = DataHandler(source)
-        messageBodyPart.fileName = fileName
-        multipart.addBodyPart(messageBodyPart)
-
-        // 메시지에 파일 담고
-        message.setContent(multipart)*/
 
         // 전송
         Transport.send(message)
