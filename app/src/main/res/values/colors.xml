@@ -7,4 +7,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="colorDivision">#e0e0e0</color>
+    <color name="rknu_red">#E60000</color>
+    <color name="knu_red">#b82d28</color>
+    <color name="custombutton1">#2E0F01</color>
+    <color name="seat_possible">#ABEE9F</color>
+    <color name="seat_selected">#a8a8a8</color>
+    <color name="gray">#D6D6D6</color>
 </resources>
