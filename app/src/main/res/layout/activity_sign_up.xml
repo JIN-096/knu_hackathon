@@ -9,10 +9,11 @@
 
     <Button
         android:id="@+id/btn_mentor_signup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/mentor_signup"
         style="@style/signup_buttonstyle"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:backgroundTint="@color/knu_red"
+        android:text="@string/mentor_signup"
         app:layout_constraintBottom_toTopOf="@+id/btn_mentee_signup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -21,11 +22,12 @@
 
     <Button
         android:id="@+id/btn_mentee_signup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
         style="@style/signup_buttonstyle"
         android:text="@string/mentee_signup"
         android:textColor="@color/button_text_color"
+        android:backgroundTint="@color/knu_red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
