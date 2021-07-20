@@ -48,20 +48,90 @@
                     android:layout_height="wrap_content"
                     android:text="@string/email" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                    android:id="@+id/email_layout"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    app:errorEnabled="true"
-                    app:errorTextAppearance="@style/signup_error_textstyle">
+                    android:layout_height="wrap_content">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/email_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        style="@style/signup_textview_textstyle"/>
-                </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/email_layout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/btnEmailVerify"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:suffixTextAppearance="@style/signup_textview_textstyle"
+                        app:expandedHintEnabled="false"
+                        app:errorEnabled="true"
+                        app:errorTextAppearance="@style/signup_error_textstyle">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/email_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:scrollHorizontally="true"
+                            style="@style/signup_textview_textstyle"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/btnEmailVerify"
+                        style="@style/signup_buttonstyle"
+                        android:text="@string/send_verify_number"
+                        android:textColor="@color/button_text_color"
+                        android:textSize="8sp"
+                        app:backgroundTint="@color/knu_red"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/email_layout"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginBottom="20dp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/emailverify_layout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/btnEmailConfirm"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:errorEnabled="true"
+                        app:errorTextAppearance="@style/signup_error_textstyle">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/emailverify_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            style="@style/signup_textview_textstyle"
+                            android:hint="@string/verify_hint"
+                            android:focusable ="false"
+                            android:clickable="false"
+                            android:cursorVisible="false"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/btnEmailConfirm"
+                        style="@style/signup_buttonstyle"
+                        android:text="@string/verify"
+                        android:textColor="@color/button_text_color"
+                        android:textSize="8sp"
+                        app:backgroundTint="@color/knu_red"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/emailverify_layout"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginBottom="20dp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
 
             <LinearLayout
