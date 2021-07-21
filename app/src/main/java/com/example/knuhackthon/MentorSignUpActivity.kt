@@ -32,7 +32,7 @@ class MentorSignUpActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         code = createEmailCode()
         binding.btnEmailVerify.setOnClickListener {
-            email = binding.emailText.text.toString()!!
+            email = binding.emailText.text.toString()!! + "@knu.ac.kr"
             CoroutineScope(Dispatchers.IO).launch { sendEmail("인증 메일입니다",code!!,email!!) }
             Toast.makeText(this,"인증 메일 발송 완료",Toast.LENGTH_SHORT).show()
         }
@@ -53,7 +53,7 @@ class MentorSignUpActivity : AppCompatActivity() {
     }
 
     fun signUp(){
-        auth?.createUserWithEmailAndPassword(binding.emailText.text.toString(), binding.pwText.text.toString())
+        auth?.createUserWithEmailAndPassword(binding.emailText.text.toString()+"@knu.ac.kr", binding.pwText.text.toString())
             ?.addOnCompleteListener {
                 task ->
                 if (task.isSuccessful){

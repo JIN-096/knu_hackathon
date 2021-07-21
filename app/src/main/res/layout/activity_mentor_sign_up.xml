@@ -46,7 +46,7 @@
                     style="@style/signup_title_textstyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/email" />
+                    android:text="@string/email_mentee" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -64,6 +64,7 @@
                         app:suffixTextAppearance="@style/signup_textview_textstyle"
                         app:expandedHintEnabled="false"
                         app:errorEnabled="true"
+                        app:suffixText="@string/userid_suffix"
                         app:errorTextAppearance="@style/signup_error_textstyle">
 
                         <com.google.android.material.textfield.TextInputEditText
