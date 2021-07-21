@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Knuhackthon">
-        <activity android:name=".MessageListActivity"></activity>
+        <activity android:name=".BoardContent"></activity>
+        <activity android:name=".MessageListActivity" />
         <activity android:name=".MentorSignUpActivity" />
         <activity android:name=".MenteeSignUpActivity" />
         <activity android:name=".SignUpActivity" />

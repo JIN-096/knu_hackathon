@@ -1,9 +1,13 @@
 package com.example.knuhackthon.navigation.board
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.knuhackthon.BoardContent
 import com.example.knuhackthon.databinding.BoardRecyclerBinding
 
 class BoardAdapter: RecyclerView.Adapter<Holder>() {
@@ -27,7 +31,10 @@ class BoardAdapter: RecyclerView.Adapter<Holder>() {
 class Holder(val binding: BoardRecyclerBinding): RecyclerView.ViewHolder(binding.root){
     init {
         binding.root.setOnClickListener {
+            val intent = Intent(it.context, BoardContent::class.java)
             Toast.makeText(binding.root.context,"클릭된 아이템 = ${binding.tvTitle.text}",Toast.LENGTH_LONG).show()
+            intent.putExtra("contents",binding.tvContent.text)
+            startActivity(it.context,intent,null)
         }
     }
 
