@@ -1,6 +1,6 @@
 ![header](https://capsule-render.vercel.app/api?type=soft&color=F7F3E9&height=120&text=KNU_SW_Hackathon&&animation=fadeIn&&fontSize=40)
 
-# 작은 몸짓
+# <p align="center">작은 몸짓</p>
 ------------
 ## 💡 프로젝트 주제
 ### **컴퓨터학부 선후배 간 멘토-멘티 매칭을 위한 안드로이드 플랫폼 개발**
