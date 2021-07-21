@@ -9,10 +9,6 @@
         android:enabled="true"
         android:title="@string/mentor_list"/>
     <item
-        android:id="@+id/action_chattinglist"
-        android:enabled="true"
-        android:title="@string/chatting_list"/>
-    <item
         android:id="@+id/action_mypage"
         android:enabled="true"
         android:title="@string/mypage"/>
