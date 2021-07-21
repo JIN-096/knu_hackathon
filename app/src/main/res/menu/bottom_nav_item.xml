@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/action_notice"
+        android:id="@+id/action_board"
         android:enabled="true"
         android:title="@string/Board"/>
     <item
-        android:id="@+id/action_reservation"
+        android:id="@+id/action_mentorlist"
         android:enabled="true"
         android:title="@string/mentor_list"/>
     <item
-        android:id="@+id/action_board"
+        android:id="@+id/action_chattinglist"
         android:enabled="true"
         android:title="@string/chatting_list"/>
     <item
