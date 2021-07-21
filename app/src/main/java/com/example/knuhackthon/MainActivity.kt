@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import com.example.knuhackthon.databinding.ActivityMainBinding
 import com.example.knuhackthon.navigation.board.BoardFragment
+import com.example.knuhackthon.navigation.chattingList.ChattingListFragment
 import com.example.knuhackthon.navigation.mentorList.MentorListFragment
 import com.example.knuhackthon.navigation.mypage.MypageFragment
 
@@ -12,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 
     val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
-    //private lateinit var chattingListFragment: ChattingListFragment
+    private lateinit var chattingListFragment: ChattingListFragment
     private lateinit var mentorListFragment: MentorListFragment
     private lateinit var mypageFragment: MypageFragment
     private lateinit var boardFragment: BoardFragment
@@ -37,12 +38,12 @@ class MainActivity : AppCompatActivity() {
                         supportFragmentManager.beginTransaction().replace(R.id.main_content,mentorListFragment).commit()
                         return@setOnItemSelectedListener true
                     }
-                    /*R.id.action_chattinglist -> {
+                    R.id.action_chattinglist -> {
                         binding.mainToolbarTextview.text = "채팅방"
                         chattingListFragment = ChattingListFragment.newInstance()
                         supportFragmentManager.beginTransaction().replace(R.id.main_content,chattingListFragment).commit()
                         return@setOnItemSelectedListener true
-                    }*/
+                    }
                     R.id.action_mypage -> {
                         binding.mainToolbarTextview.text = "마이 페이지"
                         mypageFragment = MypageFragment.newInstance()
