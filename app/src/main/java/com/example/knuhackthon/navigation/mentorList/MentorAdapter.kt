@@ -1,9 +1,13 @@
 package com.example.knuhackthon.navigation.mentorList
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.knuhackthon.MentorSignUpActivity
+import com.example.knuhackthon.MessageListActivity
 import com.example.knuhackthon.databinding.MentorRecyclerBinding
 
 class MentorAdapter: RecyclerView.Adapter<Holder>() {
@@ -23,18 +27,21 @@ class MentorAdapter: RecyclerView.Adapter<Holder>() {
         val mentor = mentorItemList.get(position)
         holder.setMentor(mentor)
     }
-
 }
 
 class Holder(val binding : MentorRecyclerBinding) : RecyclerView.ViewHolder(binding.root){
     init {
         binding.root.setOnClickListener {
             Toast.makeText(binding.root.context,"클릭된 아이템 = ${binding.tvMentorName.text}", Toast.LENGTH_LONG).show()
+            val intent = Intent(it.context, MessageListActivity::class.java)
+            intent.putExtra("name",binding.tvMentorName.text.toString())
+            startActivity(it.context,intent,null)
         }
     }
 
     fun setMentor(mentor : MentorItem){
         binding.tvMentorName.text = mentor.name
-        binding.tvMentorContent.text = mentor.content
+        binding.tvMentorBelong.text = mentor.belong
+        binding.tvMentorSpec.text = mentor.spec
     }
 }
