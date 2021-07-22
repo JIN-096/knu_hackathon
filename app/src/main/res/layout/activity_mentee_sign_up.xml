@@ -239,7 +239,7 @@
                         style="@style/signup_title_textstyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/nickname" />
+                        android:text="@string/grade" />
 
                 </LinearLayout>
 
@@ -256,6 +256,7 @@
                         android:id="@+id/nickname_text"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
+                        android:inputType="number"
                         style="@style/signup_textview_textstyle"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
