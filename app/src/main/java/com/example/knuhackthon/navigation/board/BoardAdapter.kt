@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.annotation.NonNull
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.knuhackthon.BoardContent
 import com.example.knuhackthon.databinding.BoardRecyclerBinding
 import com.example.knuhackthon.databinding.ItemBoardCommentBinding
 
@@ -44,6 +45,5 @@ class Holder(val binding: BoardRecyclerBinding): RecyclerView.ViewHolder(binding
         binding.tvAuthor.text = item.author
         binding.tvContent.text = item.content
         binding.tvDate.text = item.date
-        binding.tvCommentCnt.text = item.CommentCnt.toString()
     }
 }

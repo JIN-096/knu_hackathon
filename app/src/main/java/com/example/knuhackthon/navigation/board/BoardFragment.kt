@@ -72,13 +72,14 @@ class BoardFragment : Fragment() {
 
     fun loadData(){
         db = FirebaseFirestore.getInstance()
-        db!!.collection("contents").get().addOnSuccessListener {
+        db!!.collection("contents").orderBy("date").get().addOnSuccessListener {
             boardItemList.clear()
             for (document in it) {
                     Log.d("check","${document.data}")
                     boardItemList.add(document.toObject(BoardItem::class.java))
 
             }
+            boardItemList.reverse()
             boardFragmentBinding.boardRecycler.adapter?.notifyDataSetChanged()
         }
 

@@ -47,7 +47,6 @@ class BoardAdd : AppCompatActivity() {
                 binding.baTitle.text.toString(),
                 binding.baContent.text.toString(),
                 LocalDate.now().format(DateTimeFormatter.ISO_DATE).toString(),
-                0,
                 auth!!.uid.toString(),
                 intent.getIntExtra("bid",0)
             )

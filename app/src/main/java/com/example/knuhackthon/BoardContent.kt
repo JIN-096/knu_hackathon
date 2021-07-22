@@ -42,14 +42,19 @@ class BoardContent : AppCompatActivity() {
                     binding.ctvTitle.text = data!!.title
                     binding.ctvDate.text = data!!.date
                     binding.ctvContent.text = data!!.content
-                    binding.ctvCommentCnt.text = data!!.CommentCnt.toString()
+                    //binding.ctvCommentCnt.text = data!!.CommentCnt.toString()
                     Log.d("cmt", "db "+data.toString())
                     init()
                     break;
                 }
             }
         }
-
+        binding.ctvBtnBack.setOnClickListener {
+            finish()
+        }
+        binding.ctvBtnReload.setOnClickListener {
+            init()
+        }
         binding.btnCtv.setOnClickListener {
             auth = FirebaseAuth.getInstance()
             var comment = BoardItem.Comment()
