@@ -7,7 +7,6 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.knuhackthon.BoardContent
 import com.example.knuhackthon.databinding.BoardRecyclerBinding
 
 class BoardAdapter: RecyclerView.Adapter<Holder>() {
