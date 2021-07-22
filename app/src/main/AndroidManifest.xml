@@ -15,7 +15,6 @@
         <activity android:name=".navigation.mypage.ChangeInfoActivity"></activity>
         <activity android:name=".AddProfileActivity" />
         <activity android:name=".BoardAdd"></activity>
-        <activity android:name=".AddProfileActivity" />
         <activity android:name=".BoardContent" />
 
         <activity android:name=".MessageListActivity" />
