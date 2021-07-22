@@ -13,8 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Knuhackthon">
         <activity android:name=".navigation.mypage.ChangeInfoActivity"></activity>
-        <activity android:name=".navigation.mypage.SetUserInfoActivity" />
         <activity android:name=".AddProfileActivity" />
+        <activity android:name=".BoardAdd"></activity>
+        <activity android:name=".AddProfileActivity" />
+        <activity android:name=".BoardContent" />
+
         <activity android:name=".MessageListActivity" />
         <activity android:name=".MentorSignUpActivity" />
         <activity android:name=".MenteeSignUpActivity" />

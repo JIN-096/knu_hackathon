@@ -53,7 +53,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="20dp"
-            android:text="날짜"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -67,7 +66,6 @@
             android:ellipsize="end"
             android:ems="22"
             android:maxLines="5"
-            android:text="본문"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ctvTitle" />
@@ -82,7 +80,6 @@
             android:ellipsize="end"
             android:ems="10"
             android:maxLines="1"
-            android:text="제목"
             android:textColor="#000000"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -90,37 +87,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ctvAuthor" />
 
-        <ImageView
-            android:id="@+id/cimgComment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/ctvCommentCnt"
-            app:layout_constraintTop_toBottomOf="@+id/ctvContent"
-            app:srcCompat="@drawable/ic_outline_insert_comment" />
-
-        <TextView
-            android:id="@+id/ctvCommentCnt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="8dp"
-            android:text="0"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ctvContent" />
-
         <TextView
             android:id="@+id/ctvAuthor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="8dp"
-            android:text="이름"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -129,11 +101,14 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ctvRecycler"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_weight="1"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ctvLayout" />
 
@@ -151,19 +126,21 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/text_comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="댓글을 입력하세요." />
+            android:hint="댓글을 입력하세요."
+            android:inputType="textPersonName" />
 
         <Button
             android:id="@+id/btn_ctv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="입력" />
+            android:text="입력"
+            android:backgroundTint="@color/knu_red"
+            />
 
     </LinearLayout>
 
