@@ -17,6 +17,9 @@ import com.example.knuhackthon.navigation.board.BoardItem
 import com.example.knuhackthon.navigation.mypage.MyPageAdapter
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObjects
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MentorListFragment : Fragment() {
 
@@ -41,8 +44,22 @@ class MentorListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        loadMentor()
         var adapter = MentorAdapter()
+
+        CoroutineScope(Dispatchers.Main).launch {
+            mentorListFragmentBinding.progressBar.visibility = View.VISIBLE
+            CoroutineScope(Dispatchers.IO).launch { loadMentor() }
+
+            adapter.mentorItemList = mentorItemList
+            val decoration = DividerItemDecoration(1f, 1f, Color.LTGRAY)
+            mentorListFragmentBinding.mentorlistRecycler.addItemDecoration(decoration)
+            mentorListFragmentBinding.mentorlistRecycler.adapter = adapter
+            mentorListFragmentBinding.mentorlistRecycler.layoutManager = LinearLayoutManager(activity)
+
+            mentorListFragmentBinding.progressBar.visibility = View.GONE
+        }
+        //loadMentor()
+        /*var adapter = MentorAdapter()
         adapter.mentorItemList = mentorItemList
 
         val decoration = DividerItemDecoration(1f, 1f, Color.LTGRAY)
@@ -51,9 +68,11 @@ class MentorListFragment : Fragment() {
 
         mentorListFragmentBinding.mentorlistRecycler.adapter = adapter
         mentorListFragmentBinding.mentorlistRecycler.layoutManager = LinearLayoutManager(activity)
+
+         */
     }
 
-    fun loadMentor(){
+    suspend fun loadMentor(){
         Log.d("check","load mentor")
         db = FirebaseFirestore.getInstance()
         db!!.collection("users").get().addOnSuccessListener {

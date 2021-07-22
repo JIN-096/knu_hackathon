@@ -39,6 +39,7 @@ class Holder(val binding : MentorRecyclerBinding) : RecyclerView.ViewHolder(bind
             Toast.makeText(binding.root.context,"클릭된 아이템 = ${binding.tvMentorName.text}", Toast.LENGTH_LONG).show()
             val intent = Intent(it.context, MessageListActivity::class.java)
             intent.putExtra("name",binding.tvMentorName.text.toString())
+            intent.putExtra("uid",binding.tvMentorUid.text.toString())
             startActivity(it.context,intent,null)
         }
     }
@@ -47,6 +48,7 @@ class Holder(val binding : MentorRecyclerBinding) : RecyclerView.ViewHolder(bind
         binding.tvMentorName.text = mentor.name
         binding.tvMentorBelong.text = mentor.belong
         binding.tvMentorSpec.text = mentor.spec
+        binding.tvMentorUid.text = mentor.uid
 
         db = FirebaseFirestore.getInstance()
         db!!.collection("profileImages").get().addOnSuccessListener {

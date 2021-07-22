@@ -29,6 +29,7 @@ class SignInActivity : AppCompatActivity() {
                     if(task.isSuccessful){
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
+                        finish()
                     }
                     else{
                         Toast.makeText(this,task.exception?.message,Toast.LENGTH_LONG).show()

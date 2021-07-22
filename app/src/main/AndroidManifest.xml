@@ -15,6 +15,7 @@
         <activity android:name=".BoardAdd"></activity>
         <activity android:name=".AddProfileActivity" />
         <activity android:name=".BoardContent" />
+
         <activity android:name=".MessageListActivity" />
         <activity android:name=".MentorSignUpActivity" />
         <activity android:name=".MenteeSignUpActivity" />
