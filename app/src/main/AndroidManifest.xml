@@ -12,6 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Knuhackthon">
+        <activity android:name=".navigation.mypage.ChangeInfoActivity"></activity>
+        <activity android:name=".AddProfileActivity" />
         <activity android:name=".BoardAdd"></activity>
         <activity android:name=".AddProfileActivity" />
         <activity android:name=".BoardContent" />
