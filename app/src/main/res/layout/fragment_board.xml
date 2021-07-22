@@ -7,8 +7,28 @@
     android:layout_height="match_parent"
     tools:context=".navigation.board.BoardFragment">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/board_btn_add"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_gravity="right"
+            android:backgroundTint="@color/knu_red"
+            android:text="글쓰기"
+
+            android:textColor="@color/button_text_color" />
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="45dp"
         android:id="@+id/boardRecycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        />
+
+
 </FrameLayout>

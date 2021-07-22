@@ -1,25 +1,18 @@
 package com.example.knuhackthon
 
-import android.app.Activity
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import com.example.knuhackthon.databinding.ActivityMentorSignUpBinding
 import com.example.knuhackthon.navigation.mentorList.MentorItem
-import com.google.firebase.auth.ActionCodeSettings
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
 import java.util.*
 import javax.mail.Message
 import javax.mail.PasswordAuthentication
@@ -100,8 +93,8 @@ class MentorSignUpActivity : AppCompatActivity() {
     )
     {
         // 보내는 메일 주소와 비밀번호
-        val username = "";
-        val password = "";
+        val username = "knuhackathon@gmail.com";
+        val password = "hackathon!";
 
         val props = Properties();
         props.put("mail.smtp.auth", "true");
