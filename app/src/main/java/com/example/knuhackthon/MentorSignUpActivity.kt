@@ -1,15 +1,24 @@
 package com.example.knuhackthon
 
+import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.knuhackthon.databinding.ActivityMentorSignUpBinding
 import com.google.firebase.auth.ActionCodeSettings
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
 import java.util.*
 import javax.mail.Message
 import javax.mail.PasswordAuthentication
@@ -25,14 +34,19 @@ class MentorSignUpActivity : AppCompatActivity() {
     var email : String? = null
     var pw : String? = null
     var code : String? = null
+    var db = Firebase.firestore
+    var storage : FirebaseStorage? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         auth = FirebaseAuth.getInstance()
         code = createEmailCode()
+        storage = FirebaseStorage.getInstance()
+
         binding.btnEmailVerify.setOnClickListener {
-            email = binding.emailText.text.toString()!! + "@knu.ac.kr"
+            email = binding.emailText.text.toString()!!
             CoroutineScope(Dispatchers.IO).launch { sendEmail("인증 메일입니다",code!!,email!!) }
             Toast.makeText(this,"인증 메일 발송 완료",Toast.LENGTH_SHORT).show()
         }
@@ -52,16 +66,24 @@ class MentorSignUpActivity : AppCompatActivity() {
         }
     }
 
+
+
     fun signUp(){
-        auth?.createUserWithEmailAndPassword(binding.emailText.text.toString()+"@knu.ac.kr", binding.pwText.text.toString())
+        auth?.createUserWithEmailAndPassword(binding.emailText.text.toString(), binding.pwText.text.toString())
             ?.addOnCompleteListener {
                 task ->
                 if (task.isSuccessful){
                     Toast.makeText(this,"회원 가입 성공",Toast.LENGTH_SHORT).show()
-                    auth?.signOut()
-                    val intent = Intent(this, SignInActivity::class.java)
-                    startActivity(intent)
-                    finish()
+                    val user = Mentor(binding.nameText.text.toString(),binding.belongText.text.toString(),binding.tvMentorSpec.text.toString(),auth?.uid.toString(),1)
+                    db.collection("users").document(auth?.uid.toString()).set(user).addOnSuccessListener {
+                        Toast.makeText(this,"디비 삽입 성공",Toast.LENGTH_SHORT).show()
+
+                        val intent = Intent(this, AddProfileActivity::class.java)
+                        startActivity(intent)
+                        finish()
+
+                    }
+
                 }
                 else{
                     Toast.makeText(this,"회원 가입 실패, 재시도 해주세요",Toast.LENGTH_SHORT).show()
@@ -77,8 +99,8 @@ class MentorSignUpActivity : AppCompatActivity() {
     )
     {
         // 보내는 메일 주소와 비밀번호
-        val username = "";
-        val password = "";
+        val username = "knuhackathon@gmail.com";
+        val password = "hackathon!";
 
         val props = Properties();
         props.put("mail.smtp.auth", "true");
