@@ -1,11 +1,13 @@
 package com.example.knuhackthon
 
 import android.text.format.DateUtils.formatDateTime
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.knuhackthon.databinding.ItemChatMeBinding
 import com.example.knuhackthon.databinding.ItemChatOtherBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.installations.Utils
 import java.text.SimpleDateFormat
 
@@ -27,15 +29,21 @@ class MessageAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         fun bind(message : Message){
             binding.tvMessageOther.text = message.message
             binding.tvTimestampOther.text = message.createdAt
-            binding.tvNameOther.text = message.sender?.name
+            binding.tvNameOther.text = message.name
         }
     }
 
     override fun getItemViewType(position: Int): Int {
-        return when(messageList[position].sender?.name){
-            "천지완" -> VIEW_TYPE_MESSAGE_SENT
-            else -> VIEW_TYPE_MESSAGE_RECEIVED
-        }
+        var auth = FirebaseAuth.getInstance()
+        Log.d("uid",position.toString())
+        Log.d("uid",auth.currentUser?.uid.toString())
+        Log.d("uid",messageList.get(position).uid + messageList.get(position).message)
+
+        if(auth.currentUser?.uid.toString().equals(messageList[position].uid))
+            return VIEW_TYPE_MESSAGE_SENT
+        else
+            return VIEW_TYPE_MESSAGE_RECEIVED
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

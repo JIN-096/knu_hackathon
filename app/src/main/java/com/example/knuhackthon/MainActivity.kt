@@ -2,10 +2,13 @@ package com.example.knuhackthon
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.example.knuhackthon.databinding.ActivityMainBinding
 import com.example.knuhackthon.navigation.board.BoardFragment
+import com.example.knuhackthon.navigation.mentorList.MentorItem
 import com.example.knuhackthon.navigation.mentorList.MentorListFragment
 import com.example.knuhackthon.navigation.mypage.MypageFragment
+import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mentorListFragment: MentorListFragment
     private lateinit var mypageFragment: MypageFragment
     private lateinit var boardFragment: BoardFragment
+    var db : FirebaseFirestore = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

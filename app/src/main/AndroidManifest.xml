@@ -13,7 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Knuhackthon">
         <activity android:name=".AddProfileActivity"></activity>
-        <activity android:name=".BoardContent" />
         <activity android:name=".MessageListActivity" />
         <activity android:name=".MentorSignUpActivity" />
         <activity android:name=".MenteeSignUpActivity" />
