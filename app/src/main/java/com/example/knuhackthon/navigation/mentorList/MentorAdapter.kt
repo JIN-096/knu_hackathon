@@ -6,9 +6,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.knuhackthon.MentorSignUpActivity
+import com.bumptech.glide.Glide
 import com.example.knuhackthon.MessageListActivity
 import com.example.knuhackthon.databinding.MentorRecyclerBinding
+import com.google.firebase.firestore.FirebaseFirestore
+
 
 class MentorAdapter: RecyclerView.Adapter<Holder>() {
 
@@ -30,6 +32,8 @@ class MentorAdapter: RecyclerView.Adapter<Holder>() {
 }
 
 class Holder(val binding : MentorRecyclerBinding) : RecyclerView.ViewHolder(binding.root){
+    var db : FirebaseFirestore? = null
+
     init {
         binding.root.setOnClickListener {
             Toast.makeText(binding.root.context,"클릭된 아이템 = ${binding.tvMentorName.text}", Toast.LENGTH_LONG).show()
@@ -43,5 +47,16 @@ class Holder(val binding : MentorRecyclerBinding) : RecyclerView.ViewHolder(bind
         binding.tvMentorName.text = mentor.name
         binding.tvMentorBelong.text = mentor.belong
         binding.tvMentorSpec.text = mentor.spec
+
+        db = FirebaseFirestore.getInstance()
+        db!!.collection("profileImages").get().addOnSuccessListener {
+            for (document in it){
+                if(document.id.equals(mentor.uid.toString())){
+                    var url = document.data.get("image").toString()
+                    Glide.with(binding.imgMentorProfile).load(url).into(binding.imgMentorProfile)
+                }
+            }
+        }
+
     }
 }

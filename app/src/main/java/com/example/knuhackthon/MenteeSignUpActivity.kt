@@ -69,7 +69,7 @@ class MenteeSignUpActivity : AppCompatActivity() {
                     task ->
                 if (task.isSuccessful){
                     Toast.makeText(this,"회원 가입 성공",Toast.LENGTH_SHORT).show()
-                    val user = Mentee(binding.nameText.text.toString(),binding.gradeText.text.toString(),binding.stdIdText.text.toString(),auth?.uid.toString(),0)
+                    val user = Mentee(binding.nameText.text.toString(),binding.gradeText.text.toString(),binding.stdIdText.text.toString(),auth?.uid.toString(),"0")
                     db.collection("users").document(auth?.uid.toString()).set(user).addOnSuccessListener {
                         Toast.makeText(this,"디비 삽입 성공",Toast.LENGTH_SHORT).show()
 

@@ -5,5 +5,5 @@ data class Mentee(
     val grade : String? = null,
     val st_number : String? = null,
     val uid : String? = null,
-    val type : Int? = null
+    val type : String? = null
 )

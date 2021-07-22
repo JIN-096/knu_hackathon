@@ -5,5 +5,5 @@ data class MentorItem(
     val belong : String? = null,
     val spec : String? = null,
     val uid : String? = null,
-    val type : Int? = null
+    val type : String? = null
 )
