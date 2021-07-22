@@ -93,12 +93,12 @@ class BoardContent : AppCompatActivity() {
         db.collection("contents").document(data?.bid.toString()).collection("comments")
             .orderBy("timestamp").get().addOnSuccessListener {
                 for (document in it) {
-                    Log.d("cmt", "onCreate: " + document.toString())
+//                    Log.d("cmt", "onCreate: " + document.toString())
                     comments.add(document.toObject(BoardItem.Comment::class.java))
                 }
 
                 var adapter = CommentRecyclerviewAdapter()
-                Log.d("check", "init: " + comments.size)
+//                Log.d("check", "init: " + comments.size)
                 adapter.comments = comments
 
                 val decoration = DividerItemDecoration(1f, 1f, Color.LTGRAY)

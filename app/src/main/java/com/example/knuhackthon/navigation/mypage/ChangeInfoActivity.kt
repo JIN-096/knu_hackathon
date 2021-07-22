@@ -23,14 +23,14 @@ class ChangeInfoActivity : AppCompatActivity() {
         db = FirebaseFirestore.getInstance()
         auth = FirebaseAuth.getInstance()
         db!!.collection("users").get().addOnSuccessListener {
-            Log.d("info","가져오기 성공")
+//            Log.d("info","가져오기 성공")
             for (document in it) {
-                Log.d("loadData",document.data.get("uid")!!.toString())
-                Log.d("loadData",auth?.currentUser?.uid.toString())
+//                Log.d("loadData",document.data.get("uid")!!.toString())
+//                Log.d("loadData",auth?.currentUser?.uid.toString())
                 if(document.data.get("uid")!!.equals(auth?.currentUser?.uid.toString())){
                     uid = auth?.currentUser?.uid.toString()
                     type = document.data.get("type")!!.toString()
-                    Log.d("loadData",type!!.toString())
+//                    Log.d("loadData",type!!.toString())
                     if(type.equals("1")){
                         binding.tvUserInfo.setText("현재 당신은 멘토입니다")
                     }

@@ -59,7 +59,7 @@ class AddProfileActivity : AppCompatActivity() {
 
                 var storageRef = storage?.reference?.child("images")?.child(imageFileName)
                 storageRef?.putFile(photoUri!!)?.addOnSuccessListener {
-                    Toast.makeText(this,"put file 성공",Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(this,"put file 성공",Toast.LENGTH_SHORT).show()
                     storageRef.downloadUrl.addOnSuccessListener { uri ->
                         var map = HashMap<String, Any>()
                         var uid = FirebaseAuth.getInstance().currentUser?.uid

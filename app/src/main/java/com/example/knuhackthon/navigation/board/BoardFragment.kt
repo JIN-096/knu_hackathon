@@ -66,7 +66,7 @@ class BoardFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         loadData()
-        Log.d("check", "onResume: "+boardItemList.size)
+//        Log.d("check", "onResume: "+boardItemList.size)
 
     }
 
@@ -75,7 +75,7 @@ class BoardFragment : Fragment() {
         db!!.collection("contents").orderBy("date").get().addOnSuccessListener {
             boardItemList.clear()
             for (document in it) {
-                    Log.d("check","${document.data}")
+//                    Log.d("check","${document.data}")
                     boardItemList.add(document.toObject(BoardItem::class.java))
 
             }

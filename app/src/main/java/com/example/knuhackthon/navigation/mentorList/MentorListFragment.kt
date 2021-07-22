@@ -58,18 +58,7 @@ class MentorListFragment : Fragment() {
 
             mentorListFragmentBinding.progressBar.visibility = View.GONE
         }
-        //loadMentor()
-        /*var adapter = MentorAdapter()
-        adapter.mentorItemList = mentorItemList
 
-        val decoration = DividerItemDecoration(1f, 1f, Color.LTGRAY)
-        mentorListFragmentBinding.mentorlistRecycler.addItemDecoration(decoration)
-
-
-        mentorListFragmentBinding.mentorlistRecycler.adapter = adapter
-        mentorListFragmentBinding.mentorlistRecycler.layoutManager = LinearLayoutManager(activity)
-
-         */
     }
 
     suspend fun loadMentor(){
@@ -78,7 +67,7 @@ class MentorListFragment : Fragment() {
         db!!.collection("users").get().addOnSuccessListener {
             for (document in it) {
                 if(document.data.get("type")!!.equals("1")){
-                    Log.d("check","${document.data}")
+//                    Log.d("check","${document.data}")
                     mentorItemList.add(document.toObject(MentorItem::class.java))
                 }
             }

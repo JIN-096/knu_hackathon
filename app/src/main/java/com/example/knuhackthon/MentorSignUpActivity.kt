@@ -70,7 +70,7 @@ class MentorSignUpActivity : AppCompatActivity() {
                     Toast.makeText(this,"회원 가입 성공",Toast.LENGTH_SHORT).show()
                     val user = MentorItem(binding.nameText.text.toString(),binding.belongText.text.toString(),binding.tvMentorSpec.text.toString(),auth?.uid.toString(),"1")
                     db.collection("users").document(auth?.uid.toString()).set(user).addOnSuccessListener {
-                        Toast.makeText(this,"디비 삽입 성공",Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(this,"디비 삽입 성공",Toast.LENGTH_SHORT).show()
 
                         val intent = Intent(this, AddProfileActivity::class.java)
                         startActivity(intent)

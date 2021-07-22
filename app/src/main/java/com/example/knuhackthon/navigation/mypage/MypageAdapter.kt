@@ -40,7 +40,7 @@ class Holder(val binding: MypageRecyclerBinding) : RecyclerView.ViewHolder(bindi
 
     init {
         binding.root.setOnClickListener{
-            Toast.makeText(binding.root.context, "클릭된 아이템 = ${binding.menutext.text}", Toast.LENGTH_LONG).show()
+//            Toast.makeText(binding.root.context, "클릭된 아이템 = ${binding.menutext.text}", Toast.LENGTH_LONG).show()
             when(binding.menutext.text)
             {
                 "멘토 멘티 상태 변경" -> {
