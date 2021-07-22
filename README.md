@@ -44,6 +44,7 @@
 
 
 ### 🎥 시연영상 링크
+> https://www.youtube.com/watch?v=9oLEPxwy4Og
 
 ------------
 ### 팀원소개
