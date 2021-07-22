@@ -33,7 +33,7 @@ class Holder(val binding: BoardRecyclerBinding): RecyclerView.ViewHolder(binding
         binding.root.setOnClickListener {
             val intent = Intent(it.context, BoardContent::class.java)
             Toast.makeText(binding.root.context,"클릭된 아이템 = ${binding.tvTitle.text}",Toast.LENGTH_LONG).show()
-            intent.putExtra("contents",binding.tvContent.text)
+            intent.putExtra("contents",binding.tvContent.text.toString())
             startActivity(it.context,intent,null)
         }
     }
