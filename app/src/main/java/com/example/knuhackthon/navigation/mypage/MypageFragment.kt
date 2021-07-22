@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.knuhackthon.DividerItemDecoration
 import com.example.knuhackthon.R
 import com.example.knuhackthon.databinding.FragmentMypageBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 class MypageFragment : Fragment() {
@@ -20,6 +22,9 @@ class MypageFragment : Fragment() {
 
     var menulist = mutableListOf<MyPageMenu>()
     private lateinit var mypageFragmentBinding: FragmentMypageBinding
+    var db : FirebaseFirestore? = null
+    var auth : FirebaseAuth? = null
+    var uid : String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,7 +52,7 @@ class MypageFragment : Fragment() {
 
     fun loadMenu(){
         val res_list = listOf(R.drawable.settings)
-        val menuname = listOf("개인 정보 변경","내가 쓴 글","로그아웃")
+        val menuname = listOf("멘토 멘티 상태 변경","로그아웃")
 
         menuname.forEach { name ->
             menulist.add(MyPageMenu(res_list.get(0), name))

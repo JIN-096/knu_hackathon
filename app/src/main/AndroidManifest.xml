@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Knuhackthon">
-        <activity android:name=".AddProfileActivity"></activity>
+        <activity android:name=".navigation.mypage.ChangeInfoActivity"></activity>
+        <activity android:name=".navigation.mypage.SetUserInfoActivity" />
+        <activity android:name=".AddProfileActivity" />
         <activity android:name=".MessageListActivity" />
         <activity android:name=".MentorSignUpActivity" />
         <activity android:name=".MenteeSignUpActivity" />
