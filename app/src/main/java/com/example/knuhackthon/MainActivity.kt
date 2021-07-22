@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 false
             }
-            selectedItemId = R.id.action_board // 초기 화면
+            selectedItemId = R.id.action_mentorlist // 초기 화면
         }
     }
 

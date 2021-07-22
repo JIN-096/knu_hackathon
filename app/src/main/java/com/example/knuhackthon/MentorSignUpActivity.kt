@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.knuhackthon.databinding.ActivityMentorSignUpBinding
+import com.example.knuhackthon.navigation.mentorList.MentorItem
 import com.google.firebase.auth.ActionCodeSettings
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -74,7 +75,7 @@ class MentorSignUpActivity : AppCompatActivity() {
                 task ->
                 if (task.isSuccessful){
                     Toast.makeText(this,"회원 가입 성공",Toast.LENGTH_SHORT).show()
-                    val user = Mentor(binding.nameText.text.toString(),binding.belongText.text.toString(),binding.tvMentorSpec.text.toString(),auth?.uid.toString(),1)
+                    val user = MentorItem(binding.nameText.text.toString(),binding.belongText.text.toString(),binding.tvMentorSpec.text.toString(),auth?.uid.toString(),"1")
                     db.collection("users").document(auth?.uid.toString()).set(user).addOnSuccessListener {
                         Toast.makeText(this,"디비 삽입 성공",Toast.LENGTH_SHORT).show()
 

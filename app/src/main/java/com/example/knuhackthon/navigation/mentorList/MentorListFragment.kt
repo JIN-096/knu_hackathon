@@ -2,10 +2,12 @@ package com.example.knuhackthon.navigation.mentorList
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.knuhackthon.DividerItemDecoration
 import com.example.knuhackthon.R
@@ -13,6 +15,8 @@ import com.example.knuhackthon.databinding.FragmentMentorListBinding
 import com.example.knuhackthon.databinding.FragmentMypageBinding
 import com.example.knuhackthon.navigation.board.BoardItem
 import com.example.knuhackthon.navigation.mypage.MyPageAdapter
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.toObjects
 
 class MentorListFragment : Fragment() {
 
@@ -21,6 +25,7 @@ class MentorListFragment : Fragment() {
     }
 
     val mentorItemList = mutableListOf<MentorItem>()
+    var db : FirebaseFirestore? = null
 
     private lateinit var mentorListFragmentBinding: FragmentMentorListBinding
 
@@ -49,8 +54,16 @@ class MentorListFragment : Fragment() {
     }
 
     fun loadMentor(){
-        mentorItemList.add(MentorItem("img1","이정진","경북대학교 컴퓨터학부","총 학생회장 출신"))
-        mentorItemList.add(MentorItem("img2","천지완","경북대학교 컴퓨터학부","그냥 졸업생"))
-        mentorItemList.add(MentorItem("img3","이준하","경북대학교 컴퓨터학부","연구소 인턴"))
+        Log.d("check","load mentor")
+        db = FirebaseFirestore.getInstance()
+        db!!.collection("users").get().addOnSuccessListener {
+            for (document in it) {
+                if(document.data.get("type")!!.equals("1")){
+                    Log.d("check","${document.data}")
+                    mentorItemList.add(document.toObject(MentorItem::class.java))
+                }
+            }
+            mentorListFragmentBinding.mentorlistRecycler.adapter?.notifyDataSetChanged()
+        }
     }
 }
