@@ -49,9 +49,8 @@ class MentorListFragment : Fragment() {
     }
 
     fun loadMentor(){
-        mentorItemList.add(MentorItem("정진","학생회장 출신"))
-        mentorItemList.add(MentorItem("지완","그냥 졸업생"))
-        mentorItemList.add(MentorItem("준하","인턴"))
+        mentorItemList.add(MentorItem("img1","이정진","경북대학교 컴퓨터학부","총 학생회장 출신"))
+        mentorItemList.add(MentorItem("img2","천지완","경북대학교 컴퓨터학부","그냥 졸업생"))
+        mentorItemList.add(MentorItem("img3","이준하","경북대학교 컴퓨터학부","연구소 인턴"))
     }
-
 }
