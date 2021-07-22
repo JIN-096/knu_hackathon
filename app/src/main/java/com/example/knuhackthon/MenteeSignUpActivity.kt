@@ -93,8 +93,8 @@ class MenteeSignUpActivity : AppCompatActivity() {
     )
     {
         // 보내는 메일 주소와 비밀번호
-        val username = "knuhackathon@gmail.com";
-        val password = "hackathon!";
+        val username = "";
+        val password = "";
 
         val props = Properties();
         props.put("mail.smtp.auth", "true");
