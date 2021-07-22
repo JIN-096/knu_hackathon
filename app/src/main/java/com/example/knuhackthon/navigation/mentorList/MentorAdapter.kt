@@ -36,7 +36,7 @@ class Holder(val binding : MentorRecyclerBinding) : RecyclerView.ViewHolder(bind
 
     init {
         binding.root.setOnClickListener {
-            Toast.makeText(binding.root.context,"클릭된 아이템 = ${binding.tvMentorName.text}", Toast.LENGTH_LONG).show()
+//            Toast.makeText(binding.root.context,"클릭된 아이템 = ${binding.tvMentorName.text}", Toast.LENGTH_LONG).show()
             val intent = Intent(it.context, MessageListActivity::class.java)
             intent.putExtra("name",binding.tvMentorName.text.toString())
             intent.putExtra("uid",binding.tvMentorUid.text.toString())

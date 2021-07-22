@@ -53,7 +53,7 @@ class BoardAdd : AppCompatActivity() {
             db.collection("contents").document(intent.getIntExtra("bid",0).toString()).set(data).addOnSuccessListener {
                 finish()
             }
-            Toast.makeText(this,data.toString(),Toast.LENGTH_LONG).show()
+//            Toast.makeText(this,data.toString(),Toast.LENGTH_LONG).show()
         }
 
     }
